@@ -1,0 +1,182 @@
+.my-reports-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+}
+.my-reports-section {
+  gap: var(--dl-space-space-fiveunits);
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 120px;
+  border-color: #51515A;
+  padding-left: var(--dl-space-space-oneandhalfunits);
+  padding-right: var(--dl-space-space-oneandhalfunits);
+  flex-direction: column;
+  padding-bottom: 120px;
+  justify-content: center;
+  background-color: #000000;
+  border-top-width: 1px;
+}
+.my-reports-header {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.my-reports-section1 {
+  color: var(--dl-color-primary-100);
+}
+.my-reports-heading {
+  text-align: center;
+}
+.my-reports-cards {
+  gap: var(--dl-space-space-threeunits);
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.my-reports-text {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text01 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text02 {
+  color: rgb(128, 255, 68);
+  display: inline-block;
+}
+.my-reports-text05 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text06 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text09 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text12 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text13 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text14 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text17 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text18 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text21 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text24 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text25 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text26 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text29 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 18px;
+  font-family: "GeneralSans-Bold";
+}
+.my-reports-text30 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+.my-reports-text33 {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  font-size: 22px;
+  text-decoration: underline;
+}
+@media(max-width: 991px) {
+  .my-reports-cards {
+    gap: var(--dl-space-space-halfunit);
+  }
+}
+@media(max-width: 767px) {
+  .my-reports-cards {
+    gap: var(--dl-space-space-oneandhalfunits);
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400;700&display=swap');
+
+body {
+  font-family: 'General Sans', sans-serif;
+  background-color: #000000;
+  margin: 0;
+  color: #f7f7f9;
+}
+
+.admin-panel h1 {
+  text-align: left;
+  color: #CF2A30;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.admin-panel .filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.admin-panel .filter select {
+  padding: 5px;
+  font-size: 16px;
+  background-color: #000000;
+  color: #f7f7f9;
+  border: 2px solid #CF2A30;
+}
+
+.admin-panel label {
+  color: #f7f7f9;
+  font-weight: bold;
+}
+
+.admin-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-panel th,
+.admin-panel td {
+  padding: 10px;
+  text-align: left;
+  border: 2px solid #CF2A30;
+  color: #f7f7f9;
+}
+
+.admin-panel th {
+  background-color: #CF2A30;
+  color: #f7f7f9;
+  font-weight: bold;
+}
+
+.admin-panel td {
+  background-color: #000000;
+}

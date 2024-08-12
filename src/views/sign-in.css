@@ -1,0 +1,21 @@
+.sign-in-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-black);
+}
+.sign-in-text {
+  display: inline-block;
+  text-align: center;
+  font-family: "GeneralSans-Regular";
+}
+.sign-in-text1 {
+  display: inline-block;
+  align-self: center;
+  font-family: "GeneralSans-Bold";
+}
+.sign-in-text3 {
+  color: var(--dl-color-primary-100);
+}

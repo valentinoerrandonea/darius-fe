@@ -1,0 +1,20 @@
+.generate-your-report-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+}
+.generate-your-report-text {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  font-size: 4em;
+  font-family: "GeneralSans-Bold";
+}
+.generate-your-report-text1 {
+  display: inline-block;
+  font-size: 38px;
+  font-family: "GeneralSans-Bold";
+  background-color: var(--dl-color-primary-100);
+}

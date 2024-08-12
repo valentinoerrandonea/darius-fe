@@ -1,0 +1,25 @@
+.sign-up-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-black);
+}
+.sign-up-text {
+  fill: var(--dl-color-primary-100);
+  color: var(--dl-color-primary-100);
+  display: inline-block;
+  text-align: center;
+  font-family: "GeneralSans-Bold";
+}
+.sign-up-text1 {
+  display: inline-block;
+  text-align: center;
+  font-family: "GeneralSans-Regular";
+}
+@media(max-width: 479px) {
+  .sign-up-text {
+    text-align: center;
+  }
+}

@@ -1,0 +1,88 @@
+.my-account-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-black);
+}
+.my-account-text {
+  display: inline-block;
+}
+.my-account-text01 {
+  display: inline-block;
+}
+.my-account-text02 {
+  display: inline-block;
+  align-self: center;
+  text-align: center;
+}
+.my-account-text03 {
+  display: inline-block;
+}
+.my-account-text04 {
+  display: inline-block;
+}
+.my-account-text05 {
+  display: inline-block;
+}
+.my-account-text06 {
+  display: inline-block;
+}
+.my-account-text07 {
+  display: inline-block;
+}
+.my-account-text08 {
+  display: inline-block;
+}
+.my-account-text09 {
+  display: inline-block;
+}
+.my-account-text10 {
+  display: inline-block;
+  align-self: center;
+  text-align: center;
+}
+.my-account-text11 {
+  display: inline-block;
+}
+.my-account-text12 {
+  display: inline-block;
+}
+.my-account-text13 {
+  display: inline-block;
+}
+.my-account-text14 {
+  display: inline-block;
+}
+.my-account-text15 {
+  display: inline-block;
+}
+.my-account-text16 {
+  display: inline-block;
+}
+.my-account-text17 {
+  display: inline-block;
+}
+.my-account-text18 {
+  display: inline-block;
+}
+.my-account-text19 {
+  display: inline-block;
+}
+.my-account-text20 {
+  display: inline-block;
+}
+.my-account-text21 {
+  display: inline-block;
+}
+.my-account-text22 {
+  display: inline-block;
+}
+.my-account-container1 {
+  width: 1283px;
+  height: 477px;
+}
+.my-account-container2 {
+  display: contents;
+}
