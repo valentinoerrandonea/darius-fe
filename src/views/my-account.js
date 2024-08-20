@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { useState, Fragment } from 'react'
 
-import Script from 'dangerous-html/react'
+// import Script from 'dangerous-html/react'
 import { Helmet } from 'react-helmet'
 
 import Navbar from '../components/navbar'
@@ -265,7 +267,7 @@ const MyAccount = (props) => {
     </ContentList5> */}
       <div className="my-account-container1">
         <div className="my-account-container2">
-          <Script
+          {/* <Script
             html={`<!DOCTYPE html>
                 <html lang="en">
                 <head>
@@ -278,7 +280,7 @@ const MyAccount = (props) => {
                     
                 </body>
                 </html>`}
-          ></Script>
+          ></Script> */}
         <ContactForm51
           heading1={
             <Fragment>

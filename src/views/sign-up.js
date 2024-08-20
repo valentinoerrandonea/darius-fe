@@ -1,8 +1,10 @@
+import React from 'react'
+
 import  { Fragment } from 'react'
 
 import { Helmet } from 'react-helmet'
 
-import SignUp10 from '../components/sign-up10'
+import SignUp10 from '../components/Auth/sign-up10'
 import './sign-up.css'
 
 

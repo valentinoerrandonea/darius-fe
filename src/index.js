@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client'
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
+  Route
 } from 'react-router-dom'
+ 
 
 import './style.css'
+
 import MyReports from './views/my-reports'
 import GenerateYourReport from './views/generate-your-report'
 import Home from './views/home'
@@ -14,23 +16,49 @@ import MyAccount from './views/my-account'
 import SignUp from './views/sign-up'
 import SignIn from './views/sign-in'
 import NotFound from './views/not-found'
+import RequireAuth from './components/Auth/RequireAuth';
 
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route element={<MyReports />} exact path="/my-reports" />
+        <Route 
+          path="/my-reports"
+          element={
+            <RequireAuth>
+              <MyReports />
+            </RequireAuth>
+          } 
+          />
         <Route
-          element={<GenerateYourReport/>}
-          exact
           path="/generate-your-report"
+          element={
+            <RequireAuth>
+              <GenerateYourReport />
+            </RequireAuth>
+          }
         />
-        <Route element={<Home />} exact path="/" />
-        <Route element={<MyAccount/>} exact path="/my-account" />
+        <Route 
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route 
+          path="/my-account"
+          element={
+            <RequireAuth>
+              <MyAccount />
+            </RequireAuth>
+          }
+        />
+
         <Route element={<SignUp/>} exact path="/sign-up" />
         <Route element={<SignIn/>} exact path="/sign-in" />
-        <Route component={<NotFound/>} path="**" />
+        <Route element={<NotFound/>} path="**" />
         {/* <Navigate to="**" /> */}
 
       </Routes>

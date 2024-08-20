@@ -1,6 +1,7 @@
 
+import React from 'react'
 
-import Script from 'dangerous-html/react'
+// import Script from 'dangerous-html/react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
@@ -37,7 +38,7 @@ const Home = (props) => {
           </div>
           <div className="home-image">
             <img
-              alt="image"
+              alt="A logo svg"
               src="/darius-logo-package-icon-red.svg"
               className="home-image1"
             />
@@ -121,8 +122,8 @@ const Home = (props) => {
       </footer>
       <div>
         <div className="home-container2">
-          <Script
-          ></Script>
+          {/* <Script
+          ></Script> */}
         </div>
       </div>
     </div>

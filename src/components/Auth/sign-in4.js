@@ -1,10 +1,27 @@
-import { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect  } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+import { isLoggedIn, setSessionData } from '../../utils/sessionUtils';
+
 import PropTypes from 'prop-types';
 import './sign-in4.css';
 const API = process.env.REACT_APP_API;
 
+// AnotherComponent.js
+
 
 const SignIn4 = (props) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      console.log("FUNCIONA")
+      // If the user is already logged in, redirect them to the home page or dashboard
+      navigate('/');
+    }
+  }, [navigate]);
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -79,8 +96,45 @@ const SignIn4 = (props) => {
       let data = await response.json();
 
       if (data.message) {
+        // Store user data in localStorage or sessionStorage
+        // localStorage.setItem('user_id', data.user_id);
+        // localStorage.setItem('email', data.email);
+        // localStorage.setItem('first_name', data.first_name);
+        // localStorage.setItem('admin_type', data.admin_type);
+
+        const userData = {
+          user_id: data.user_id,
+          email: data.email,
+          first_name: data.first_name,
+          admin_type: data.admin_type
+        };
+        
+        // Store this data in localStorage
+        setSessionData(userData);
+        
+          // IMPROVE MESSAGE VIEW
         alert(data.message);
+
         window.location.href = '/';
+
+        // POSSIBLE SWICH TO ADMIN USERS VIEWS
+        // switch (data.admin_type) {
+        //   case 1: // superAdmin
+        //     window.location.href = '/admin/dashboard';
+        //     break;
+        //   case 2: // admin
+        //     window.location.href = '/admin/home';
+        //     break;
+        //   case 3: // reporter
+        //     window.location.href = '/reporter/home';
+        //     break;
+        //   case 4: // reader
+        //     window.location.href = '/';
+        //     break;
+        //   default:
+        //     window.location.href = '/';
+        //     break;
+        // }
       }
     } catch (error) {
       console.error(error);
@@ -89,6 +143,7 @@ const SignIn4 = (props) => {
       document.getElementById('login-btn').disabled = false; // Enable the submit button
     }
   };
+  
 
   return (
     <div className="sign-in4-container thq-section-padding">

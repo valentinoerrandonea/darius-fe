@@ -1,4 +1,9 @@
-import { Fragment, useState } from 'react';
+
+import React, { useState, useEffect  } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../../utils/sessionUtils';
+
 
 import PropTypes from 'prop-types'
 
@@ -8,6 +13,16 @@ const API = process.env.REACT_APP_API;
 
 
 const SignUp10 = (props) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      console.log("FUNCIONA")
+      // If the user is already logged in, redirect them to the home page or dashboard
+      navigate('/');
+    }
+  }, [navigate]);
 
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -125,10 +140,10 @@ const SignUp10 = (props) => {
   };
 
 
-  const isValidEmail = (email) => {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return re.test(email);
-  };
+  // const isValidEmail = (email) => {
+  //   const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  //   return re.test(email);
+  // };
 
 
 

@@ -1,4 +1,5 @@
-import { Fragment, useState, useEffect } from 'react';
+import React from 'react'
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './contact-form51.css';
 
@@ -6,6 +7,7 @@ const API = process.env.REACT_APP_API;
 
 
 const ContactForm51 = (props) => {
+  const { getUsers } = props;
   const [first_name, setName] = useState('');
   const [last_name, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -58,8 +60,8 @@ const ContactForm51 = (props) => {
 
 
   useEffect(() => {
-    props.getUsers();
-  }, []);
+    getUsers();
+  }, [getUsers]); // ADD getUsers AS A DEPENDENCY
 
   return (
     <div className="contact-form51-contact1 thq-section-padding">

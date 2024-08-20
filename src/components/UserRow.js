@@ -1,3 +1,5 @@
+import React from 'react'
+
 const UserRow = ({ user, allOptions, onToggleActive, onEdit, onDelete, onChangeAdmin }) => {
     return (
       <tr>

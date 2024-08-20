@@ -1,9 +1,11 @@
+import React from 'react'
 
 
 import PropTypes from 'prop-types'
 
 import './navbar.css'
 import { Link } from 'react-router-dom'
+import LogoutButton from './Auth/LogoutButton'
 
 const Navbar = (props) => {
   return (
@@ -24,6 +26,7 @@ const Navbar = (props) => {
         <Link to="/generate-your-report" className="navbar-get-started get-started">
           <span className="navbar-text" to="/generate-your-report">Generate Report</span>
         </Link>
+        <LogoutButton />
         {/* <div id="open-mobile-menu" className="navbar-hamburger get-started">
           <img
             alt={props.imageAlt}

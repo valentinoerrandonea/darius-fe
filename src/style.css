@@ -3,14 +3,14 @@
   font-style: normal;
   font-format: opentype;
   font-weight: 400;
-  src: url("/public/fonts/generalsans-regular.otf") ;
+  src: url("./fonts/generalsans-regular.otf") ;
 }
 @font-face {
   font-family: "GeneralSans-Bold";
   font-style: normal;
   font-format: opentype;
   font-weight: 700;
-  src: url("/public/fonts/generalsans-bold.otf") ;
+  src: url("./fonts/generalsans-bold.otf") ;
 }
 :root {
   --dl-color-gray-500: #595959;
