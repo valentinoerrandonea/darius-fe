@@ -106,7 +106,8 @@ const SignIn4 = (props) => {
           user_id: data.user_id,
           email: data.email,
           first_name: data.first_name,
-          admin_type: data.admin_type
+          admin_type: data.admin_type,
+          token: data.token
         };
         
         // Store this data in localStorage

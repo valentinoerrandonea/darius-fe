@@ -1,13 +1,13 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './contact-form51.css';
 
+import { getSessionData } from '../utils/sessionUtils'
+
+
 const API = process.env.REACT_APP_API;
 
-
-const ContactForm51 = (props) => {
-  const { getUsers } = props;
+const ContactForm51 = ({ getUsers, heading1, action }) => {
   const [first_name, setName] = useState('');
   const [last_name, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,11 +21,16 @@ const ContactForm51 = (props) => {
     setError(null);
 
     try {
+      const sessionData = getSessionData();
+      const token = sessionData.token;
+
       const res = await fetch(`${API}/profile/create_user`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,  // Incluye el token aquí
+                  'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           first_name,
           last_name,
@@ -38,18 +43,16 @@ const ContactForm51 = (props) => {
         throw new Error('Failed to create user');
       }
 
-      const data = await res.json();
-      console.log(data);
-      
-      // Llama a getUsers para actualizar la tabla después de crear un usuario
-      props.getUsers();
+      await res.json();
 
-      // Opcional: Resetear el formulario después de crear el usuario
+      // Refresh the user list after creating a new user
+      getUsers();
+
+      // Reset the form after successful submission
       setName('');
       setLastName('');
       setEmail('');
       setPassword('');
-
     } catch (error) {
       console.error('Error:', error);
       setError('Failed to create user');
@@ -58,30 +61,20 @@ const ContactForm51 = (props) => {
     }
   };
 
-
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]); // ADD getUsers AS A DEPENDENCY
-
   return (
     <div className="contact-form51-contact1 thq-section-padding">
       <div className="thq-flex-column thq-section-max-width">
         <div className="contact-form51-section-title thq-flex-column">
           <div className="contact-form51-content">
-            <h2>
-              {props.heading1 || (
-                <h2 className="contact-form51-text6 thq-heading-2">Contact us</h2>
-              )}
-            </h2>
+            {heading1 || (
+              <h2 className="contact-form51-text6 thq-heading-2">Contact us</h2>
+            )}
           </div>
         </div>
         <form className="contact-form51-form thq-flex-column" onSubmit={handleSubmit}>
           <div className="contact-form51-container">
             <div className="contact-form51-input">
-              <label
-                htmlFor="contact-form-5-first-name"
-                className="contact-form51-text1 thq-body-small"
-              >
+              <label htmlFor="contact-form-5-first-name" className="contact-form51-text1 thq-body-small">
                 First name
               </label>
               <input
@@ -95,10 +88,7 @@ const ContactForm51 = (props) => {
               />
             </div>
             <div className="contact-form51-input1">
-              <label
-                htmlFor="contact-form-5-last-name"
-                className="contact-form51-text2 thq-body-small"
-              >
+              <label htmlFor="contact-form-5-last-name" className="contact-form51-text2 thq-body-small">
                 Last name
               </label>
               <input
@@ -114,10 +104,7 @@ const ContactForm51 = (props) => {
           </div>
           <div className="contact-form51-container1">
             <div className="contact-form51-input2">
-              <label
-                htmlFor="email"
-                className="contact-form51-text3 thq-body-small"
-              >
+              <label htmlFor="email" className="contact-form51-text3 thq-body-small">
                 Email
               </label>
               <input
@@ -131,10 +118,7 @@ const ContactForm51 = (props) => {
               />
             </div>
             <div className="contact-form51-input3">
-              <label
-                htmlFor="password"
-                className="contact-form51-text4 thq-body-small"
-              >
+              <label htmlFor="password" className="contact-form51-text4 thq-body-small">
                 Password
               </label>
               <input
@@ -150,34 +134,22 @@ const ContactForm51 = (props) => {
           </div>
           <div className="contact-form51-container2">
             <div className="contact-form51-input4">
-              <label
-                htmlFor="contact-form-5-options"
-                className="contact-form51-text5 thq-body-small"
-              >
+              <label htmlFor="contact-form-5-options" className="contact-form51-text5 thq-body-small">
                 Permissions
               </label>
-              <select
-                id="contact-form-5-options"
-                className="thq-select"
-              >
+              <select id="contact-form-5-options" className="thq-select">
                 <option value="Customer service">Customer service</option>
                 <option value="Finance">Finance</option>
                 <option value="Feature request">Feature request</option>
               </select>
             </div>
           </div>
-          <button
-            type="submit"
-            className="contact-form51-button thq-button-filled"
-            disabled={loading}
-          >
-            <span>
-              {props.action || (
-                <span className="contact-form51-text7 thq-body-small">
-                  {loading ? 'Creating...' : 'Create User'}
-                </span>
-              )}
-            </span>
+          <button type="submit" className="contact-form51-button thq-button-filled" disabled={loading}>
+            {action || (
+              <span className="contact-form51-text7 thq-body-small">
+                {loading ? 'Creating...' : 'Create User'}
+              </span>
+            )}
           </button>
         </form>
         {error && <div className="error-message">{error}</div>}
@@ -186,15 +158,10 @@ const ContactForm51 = (props) => {
   );
 };
 
-ContactForm51.defaultProps = {
-  heading1: undefined,
-  action: undefined,
-};
-
 ContactForm51.propTypes = {
+  getUsers: PropTypes.func.isRequired,
   heading1: PropTypes.element,
   action: PropTypes.element,
-  setUsers: PropTypes.func.isRequired,
 };
 
 export default ContactForm51;

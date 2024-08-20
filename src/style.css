@@ -60,6 +60,11 @@
   --dl-radius-radius-buttonradius: 24px;
   --dl-space-space-oneandhalfunits: 24px;
 }
+
+.error-message {
+  color: red;
+}
+
 .button {
   cursor: pointer;
   display: flex;

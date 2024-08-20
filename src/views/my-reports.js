@@ -7,6 +7,8 @@ import Navbar from '../components/navbar'
 import Article from '../components/article'
 import './my-reports.css'
 
+import { getSessionData } from '../utils/sessionUtils'
+
 const API = process.env.REACT_APP_API;
 
 const MyReports = (props) => {
@@ -16,11 +18,16 @@ const MyReports = (props) => {
 
     const searchReports = async () => {
         try {
+            const sessionData = getSessionData();
+            const token = sessionData.token;
+            console.log(token)
             let response = await fetch(`${API}/report/search_reports`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                method: 'GET', headers: {
+                  'Authorization': `Bearer ${token}`,  // Incluye el token aquí
+                  'Content-Type': 'application/json',
+              },
+              credentials: 'include',  // Ensures cookies are sent
+              
             });
 
             if (!response.ok) {

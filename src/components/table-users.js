@@ -7,6 +7,7 @@ const API = process.env.REACT_APP_API;
 
 
 const TableUsers = ({ users, getUsers}) => {
+  
   const [filter, setFilter] = useState(0);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
 
@@ -37,13 +38,13 @@ const TableUsers = ({ users, getUsers}) => {
     });
   }, [recordsPerPage]);
 
-  useEffect(() => {
-    changeRecordsPerPage();
-  }, [recordsPerPage, users, changeRecordsPerPage]);
+  // useEffect(() => {
+  //   changeRecordsPerPage();
+  // }, [recordsPerPage, users, changeRecordsPerPage]);
 
-  useEffect(() => {
-    sortTable();
-  }, [filter, sortTable]);
+  // useEffect(() => {
+  //   sortTable();
+  // }, [filter, sortTable]);
 
   const allOptions = [
     { key: 2, value: "Admin" },
@@ -51,7 +52,20 @@ const TableUsers = ({ users, getUsers}) => {
     { key: 4, value: "Reader" },
   ];
 
+  useEffect(() => {
+    if (!isLoading) {
+      changeRecordsPerPage();
+    }
+  }, [recordsPerPage, changeRecordsPerPage]);
+  
+  useEffect(() => {
+    if (!isLoading) {
+      sortTable();
+    }
+  }, [filter, sortTable]);
+
   const handleToggleActive = async (userId, isActive) => {
+    setIsLoading(true);
     console.log("Toggle active for user:", userId);
   
     const newStatus = !isActive; // Alterna el estado
@@ -74,7 +88,7 @@ const TableUsers = ({ users, getUsers}) => {
       console.log("User status updated:", data);
   
       // Actualiza la lista de usuarios
-      getUsers();
+      await getUsers();
     } catch (error) {
       console.error('Error:', error);
       // Puedes usar un estado o componente para mostrar el mensaje de error
