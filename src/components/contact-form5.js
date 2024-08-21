@@ -2,6 +2,7 @@
 import React, { useState, useRef, Fragment } from 'react';
 
 import PropTypes from 'prop-types'
+import { getSessionData } from '../utils/sessionUtils'
 
 import './contact-form5.css'
 
@@ -72,11 +73,18 @@ const ContactForm5 = (props) => {
       : `${API}/report/save_report`;
 
     const method = reportId ? 'PUT' : 'POST';
-
+    const sessionData = getSessionData();
+    const token = sessionData.token;
+    console.log(formData)
     try {
       const response = await fetch(url, {
         method: method,
-        body: new URLSearchParams(formData),
+        headers: {
+          'Authorization': `Bearer ${token}`,  // Incluye el token aquí
+          'Content-Type': 'application/json',
+        },
+        // body: new URLSearchParams(formData),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -273,7 +281,7 @@ const ContactForm5 = (props) => {
                   required
                   value={formData.objective_of_expansion}
                   onChange={handleInputChange}
-                  placeholder="Objective of expansion"
+                  placeholder="Expansion objective"
                   className="contact-form5-text-input18 thq-input"
                 />
               </div>
@@ -282,7 +290,7 @@ const ContactForm5 = (props) => {
                   htmlFor="target_countries"
                   className="contact-form5-text19 thq-body-small"
                 >
-                  Target Country/ies *
+                  Target Country
                 </label>
                 <input
                   type="text"

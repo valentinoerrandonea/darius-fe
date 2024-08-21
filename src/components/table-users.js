@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './table-users.css';
 import UserRow from './UserRow'
+import { getSessionData } from '../utils/sessionUtils'
 
 const API = process.env.REACT_APP_API;
 
@@ -71,11 +72,15 @@ const TableUsers = ({ users, getUsers}) => {
     const newStatus = !isActive; // Alterna el estado
   
     try {
+      const sessionData = getSessionData();
+      const token = sessionData.token;
       const response = await fetch(`${API}/profile/toggle_active_status`, {
         method: 'PUT',
         headers: {
+          'Authorization': `Bearer ${token}`,  // Incluye el token aquí
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ user_id: userId, is_active: newStatus }),
       });
   
@@ -117,9 +122,12 @@ const TableUsers = ({ users, getUsers}) => {
     setError(null);
   
     try {
+      const sessionData = getSessionData();
+      const token = sessionData.token;
       const response = await fetch(`${API}/profile/save_selection_admin`, {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${token}`,  // Incluye el token aquí
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ user_id: userId, selection: adminValue }),

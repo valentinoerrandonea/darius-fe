@@ -1,10 +1,13 @@
 import React, { Fragment, useState, useEffect  } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { isLoggedIn, setSessionData } from '../../utils/sessionUtils';
 
 import PropTypes from 'prop-types';
 import './sign-in4.css';
+import { Link } from 'react-router-dom';
+import GoogleSignInButton from './GoogleSignInButton ';
+
 const API = process.env.REACT_APP_API;
 
 // AnotherComponent.js
@@ -13,6 +16,14 @@ const API = process.env.REACT_APP_API;
 const SignIn4 = (props) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (isLoggedIn()) {
@@ -22,11 +33,39 @@ const SignIn4 = (props) => {
     }
   }, [navigate]);
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-  const [errorMessage, setErrorMessage] = useState('');
+  useEffect(() => {
+    // Captura los parámetros de la URL cuando se carga la vista
+    const searchParams = new URLSearchParams(location.search);
+    const message = searchParams.get('message');
+    const user_id = searchParams.get('user_id');
+    const email = searchParams.get('email');
+    const first_name = searchParams.get('first_name');
+    const admin_type = searchParams.get('admin_type');
+    const token = searchParams.get('token');
+
+    // Si los parámetros existen, los guardamos en la sesión
+    if (user_id && email && first_name && admin_type && token) {
+      const userData = {
+        message,
+        user_id,
+        email,
+        first_name,
+        admin_type,
+        token
+      };
+
+      // Guardar los datos en sessionStorage
+      setSessionData(userData);
+      alert(userData.message);
+
+      window.location.href = '/';
+    }
+
+    const error = searchParams.get('error');
+    if (error) {
+      setErrorMessage(decodeURIComponent(error));
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     setFormData({
@@ -176,18 +215,21 @@ const SignIn4 = (props) => {
                     }}
                   />
                 </span>
-                <span className="sign-in4-text03">Sign up</span>
+                <Link className="sign-in4-text03" to="/sign-up">Sign up</Link>
+
+                {/* <span className="sign-in4-text03">Sign up</span> */}
               </p>
             </div>
             <div className="sign-in4-container2">
-              <button className="sign-in4-button thq-button-outline">
+              {/* <button className="sign-in4-button thq-button-outline">
                 <svg viewBox="0 0 860.0137142857142 1024" className="sign-in4-icon">
                   <path d="M438.857 449.143h414.286c4 22.286 6.857 44 6.857 73.143 0 250.286-168 428.571-421.143 428.571-242.857 0-438.857-196-438.857-438.857s196-438.857 438.857-438.857c118.286 0 217.714 43.429 294.286 114.857l-119.429 114.857c-32.571-31.429-89.714-68-174.857-68-149.714 0-272 124-272 277.143s122.286 277.143 272 277.143c173.714 0 238.857-124.571 249.143-189.143h-249.143v-150.857z"></path>
                 </svg>
                 <span className="sign-in4-text04 thq-body-small">
                   Continue with Google
                 </span>
-              </button>
+              </button> */}
+              <GoogleSignInButton />
             </div>
             <div className="sign-in4-divider">
               <div className="sign-in4-divider1"></div>
